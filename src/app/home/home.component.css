@@ -1,0 +1,29 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+.firstdiv{
+  padding-left: 30%;
+}
+.example-card {
+  max-width: 200px;
+  max-height: 250px ;
+}
+.my-custom-scrollbar {
+  /* position:relative; */
+  height: 350px;
+  /* width: 600px; */
+  /* overflow: auto; */
+}
+.table-wrapper-scroll-y {
+  display:flexbox;
+}
+.header{
+  position:sticky;
+  top: 0 ;
+  background-color:white;
+}
+.res{
+  font-size: medium;
+  font-weight: bolder;
+}
+.smallbg{
+  background-color:lightblue;
+}

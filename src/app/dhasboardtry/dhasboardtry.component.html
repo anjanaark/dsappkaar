@@ -1,0 +1,21 @@
+<div class="bodycol">
+<div class="container pt-5">
+    <div class="row justify-content-center  col-sm-18">
+      <div class="col-sm-6 shadow round logincol pb-3">
+        <div class="text-center">
+          <input class="form-control" type="file" name="file" (change)="onChange($event)" />
+          <br />
+          <input class="form-control" type="date" #name name="date"  value="2018-12-31" min="2018-12-31" (change)="onDate(name.value)"/>
+          <br>
+          <br>
+          <button class="btn btn-primary" (click)="submitdata()">Upload</button>
+        </div>
+        <br>
+          <div class="alligncenter" *ngFor="let csv of my_csv">
+              <p>{{csv}}</p>
+          </div>
+      </div>
+    </div>
+</div>
+</div>
+

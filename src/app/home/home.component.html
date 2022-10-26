@@ -1,0 +1,122 @@
+<div class="container pt-5">
+  <div>
+    <button class="btn btn-md btn-block smallbg" routerLink="/dashboard">Visual forecast</button>
+  </div>
+  <br>
+  <div>
+    <button class="btn btn-md btn-block smallbg" routerLink="/dashboardtry">Forecast  app</button>
+  </div>
+  <div class="firstdiv">
+    <div class="row justify-content-center pt-2 col-sm-7 align-middle">
+      <div class="col-sm-6 shadow smallbg round pb-3">
+        <h1 class="text-center pt-3 ">My Data App</h1>
+        <form [formGroup]="registrationForm">
+          <div class="form-group">
+            <label class="col-form-label">Upload dataset:</label>
+            <input
+              type="file"
+              formControlName="file"
+              class="form-control"
+              accept=".csv"
+              required
+              (change)="changeListener($any($event.target).files)"
+            />
+          </div>
+          <br />
+        </form>
+      </div>
+    </div>
+  </div>
+  <br />
+  <mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Dataset"
+      ><div class="container mt-3 table-wrapper-scroll-y my-custom-scrollbar">
+        <table class="table ">
+          <thead  class="header" scope="col" >
+            <tr>
+              <th *ngFor="let item of lines[0]; let i = index">{{ item }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of linesR[0]; let i = index">
+              <td *ngFor="let itemm of lines[0]; let j = index">
+                {{   item[j]   }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </mat-tab>
+    <mat-tab label="Prediction">
+        <h3>
+          <div style ="text-align:center">
+              CAR SALES PREDICTION
+          </div>
+        </h3>
+        <br>
+        <form [formGroup]="registrationForm" (ngSubmit)="on_Submit()">
+          <div class="d-grid">
+
+            <div class="form-group">
+              <label for="oem" class="col-form-label">Car Manufacturer</label>
+              <select class="form-control " formControlName="oem" required="required">
+                <option *ngFor="let man of OEM" [ngValue]="man">
+                  {{ man }}
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="model" class="col-form-label">Car Models</label>
+              <select class="form-control " formControlName="model" required="required">
+                <option *ngFor="let mod of MODELS" [ngValue]="mod">
+                  {{ mod }}
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="body" class="col-form-label">Body Type</label>
+              <select class="form-control " formControlName="body" required="required">
+                <option *ngFor="let bod of BODYTP" [ngValue]="bod">
+                  {{ bod }}
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="price" class="col-form-label">Price (In Lakhs)</label>
+              <input type="text" formControlName="price" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label for="years" class="col-form-label">Years</label>
+              <input type="text" formControlName="years" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label for="month" class="col-form-label">Month (In Numbers)</label>
+              <input type="text" formControlName="month" class="form-control" required>
+            </div>
+            <br>
+            <pre class="text-center res">Linear Regression: {{this.data1|json}}</pre>
+            <pre class="text-center res">Decision Tree Regression: {{this.data2|json}}</pre>
+            <pre class="text-center res">Random Forest Regression: {{this.data3|json}}</pre>
+            <br>
+
+            <button type="submit" class="btn btn-danger btn-lg btn-block">
+              Predict
+            </button>
+            </div>
+            </form>
+    </mat-tab>
+    <mat-tab label="PowerBI">      
+      <div>
+        <br><br>
+        <iframe title="angular app" width="1100" height="500" src="https://app.powerbi.com/reportEmbed?reportId=fbfd9f4b-26a9-4365-9614-553f5f35339f&autoAuth=true&ctid=03cff094-2d3a-44a4-af58-db6383b3845d&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+
